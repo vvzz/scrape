@@ -16,7 +16,7 @@ define (require) ->
       tbody = @$el.find('tbody')
       tbody.empty()
       @collection.each (result) =>
-        tbody.append _.template($("#row_template").html(), result)
+        tbody.append _.template($("#row_template").html(), result.toJSON())
 
 
 

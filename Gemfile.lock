@@ -6,10 +6,9 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     execjs (2.0.1)
+    json (1.8.0)
+    nokogiri (1.5.5)
     rack (1.5.2)
-    rack-coffee (1.0.2)
-      coffee-script
-      rack
     rack-protection (1.5.0)
       rack
     sinatra (1.4.3)
@@ -22,5 +21,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rack-coffee
+  coffee-script
+  json
+  nokogiri
   sinatra

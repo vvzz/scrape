@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'coffee-script'
 require 'json'
+require 'open-uri'
+require 'nokogiri'
+
 
 set :public_folder, 'public'
 
@@ -22,8 +25,12 @@ get '/' do
 end
 
 get '/scrape' do
+  puts params[:url]
   content_type :json
-  [{id: 5, name: "test"}].to_json
+  page = Nokogiri::HTML(open(params[:url]))
+  names = page.xpath(params[:xPath])
+
+  names.map{|e| {:name => e.to_s}}.to_json
 end
 
 
