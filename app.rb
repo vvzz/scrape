@@ -2,8 +2,15 @@ require 'sinatra'
 require 'coffee-script'
 require 'json'
 require 'open-uri'
-require 'nokogiri'
+require 'net/http'
+require './parser'
 
+
+class RegexHelper
+  def content_matches_regex node_set, regex_string
+    ! node_set.select { |node| node.content =~ /#{regex_string}/ }.empty?
+  end
+end
 
 set :public_folder, 'public'
 
@@ -25,12 +32,9 @@ get '/' do
 end
 
 get '/scrape' do
-  puts params[:url]
   content_type :json
-  page = Nokogiri::HTML(open(params[:url]))
-  names = page.xpath(params[:xPath])
-
-  names.map{|e| {:name => e.to_s}}.to_json
+  url = params[:url]
+  AwesomeParser.parse(open(url)).to_json
 end
 
 

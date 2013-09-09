@@ -23,7 +23,6 @@ define (require) ->
     btnClicked: (ev) ->
       $.getJSON "/scrape",
         url: @$el.find("#scrapeUrl").val()
-        xPath: @$el.find("#xpath").val()
       .done @scrapeSuccess
       ev.stopPropagation()
 

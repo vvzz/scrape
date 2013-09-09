@@ -36,13 +36,9 @@
 <script type="text/template" id="form_template">
     <div class="row">
         <div class="span12 form-inline">
-                <div class="form-group col-lg-7">
+                <div class="form-group col-lg-10">
                     <label class="sr-only" for="scrapeUrl"></label>
                     <input class="form-control input-lg" id="scrapeUrl" placeholder="Contact page URL" value="http://alumni.brown.edu/about/staff/index.html">
-                </div>
-                <div class="form-group col-lg-3">
-                    <label class="sr-only" for="xpath"></label>
-                    <input class="form-control input-lg" id="xpath" placeholder="XPath" value="//span[2]/dl/dt/a/text()">
                 </div>
                     <button class="btn btn-success btn-lg" id="scrapeButton">Scrape!</button>
         </div>
@@ -54,8 +50,10 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>#</th>
             <th>Name</th>
+            <th>Title</th>
+            <th>Phone</th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody></tbody>
@@ -64,8 +62,10 @@
 
 <script type="text/template" id="row_template">
     <tr>
-        <td></td>
         <td><%= name %></td>
+        <td><%= title %></td>
+        <td><%= phone %></td>
+        <td><%= email %></td>
     </tr>
 </script>
 
